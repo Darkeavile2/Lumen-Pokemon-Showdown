@@ -321,7 +321,7 @@ exports.grouplist = [
 		kick: true
 	},
 	{
-		symbol: '\u2295',
+		symbol: '☕',
 		id: "operator",
 		name: "Operator",
 		inherit: '+',
