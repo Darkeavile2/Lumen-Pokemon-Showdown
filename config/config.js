@@ -338,8 +338,8 @@ exports.grouplist = [
 	},
 	{
 		symbol: '$',
-		id: "destacado",
-		name: "Destacado",
+		id: "Reconocido",
+		name: "Reconocido",
 		inherit: ' ',
 		broadcast: true
 	},
