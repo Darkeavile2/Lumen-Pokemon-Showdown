@@ -17,7 +17,7 @@ exports.commands = {
 			'<tr><td>Símbolo</td><td>Compra el acceso al comado /customsymbol que permite elegir un símbolo (excepto staff) para aparecer en lo alto de la lista de usuarios.</td><td>700</td></tr>' +
 			'<tr><td>TC</td><td>Compra una Tarjeta de entrenador básica. Con una Imagen modificable con /tcimage y una frase de entrenador modificable con /tcphrase</td><td>600</td></tr>' +
 			'<tr><td>Arreglo</td><td>Si ya tienes un avatar personalizado. Puedes cambiarlo por otro diferente.</td><td>500</td></tr>' +
-			'<tr><td>Destacado</td><td>Compra el derecho a tener el rango $</td><td>15000</td></tr>' +
+			'<tr><td>Reconocido</td><td>Compra el derecho a tener el rango $</td><td>15000</td></tr>' +
 			'</tbody></table><br /> Para comprar un artículo usa el comando /buy (artículo)' +
 			'<br /> Algunos artículos solo se pueden comprar contactando con un Administrador. Para más información usa /shophelp' +
 			'</center>'
@@ -65,7 +65,7 @@ exports.commands = {
 		var article = toId(params[0]);
 		switch (article) {
 			case 'customtc':
-				prize = 8000;
+				prize = 600;
 				if (Shop.getUserMoney(user.name) < prize) return this.sendReply("No tienes suficiente dinero.");
 				var tcUser = Shop.getTrainerCard(user.name);
 				if (!tcUser) {
@@ -112,16 +112,16 @@ exports.commands = {
 				}
 				return this.sendReply("No se pudo realizar la compra debido a un error al crear la sala '" + params[1] + "'.");
 				break;
-			case 'symbol':
-				prize = 4000;
+			case 'reconocido':
+				prize = 15000;
 				if (Shop.getUserMoney(user.name) < prize) return this.sendReply("No tienes suficiente dinero.");
 				if (Shop.symbolPermision(user.name)) return this.sendReply("Ya posees este artículo.");
 				Shop.setSymbolPermision(user.name, true);
 				Shop.removeMoney(user.name, prize);
 				return this.sendReply("Has comprado el permiso para usar los comandos /customsymbol y /resetsymbol. Para más información consulta /shophelp.");
 				break;
-			case 'avatar':
-				prize = 1000;
+			case 'arreglo':
+				prize = 500;
 				if (Shop.getUserMoney(user.name) < prize) return this.sendReply("No tienes suficiente dinero.");
 				if (!Config.customavatars[user.userid]) return this.sendReply("No tenías un avatar personalizado.");
 				if (params.length !== 2) return this.sendReply("Usa el comando así: /buy avatar,[imagen]");
